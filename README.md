@@ -1,2 +1,3 @@
 # js-value-object
-A value object libary for nodejs
+
+A value object library for nodejs
