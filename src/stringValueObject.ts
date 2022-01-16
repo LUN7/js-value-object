@@ -1,4 +1,4 @@
-import { ValueObject } from "valueObject";
+import { ValueObject } from "./valueObject";
 
 export class StringValueObject extends ValueObject<string> {
   static create(value: string, name: string): StringValueObject {
