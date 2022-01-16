@@ -1,4 +1,4 @@
-import { ValueObject } from "valueObject";
+import { ValueObject } from "./valueObject";
 
 export class DateValueObject extends ValueObject<Date> {
   static create(value: Date, name: string): DateValueObject {
