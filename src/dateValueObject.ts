@@ -1,16 +1,32 @@
-import { ValueObject } from "./valueObject";
+import { IValueObjectProps, ValueObject } from "./valueObject";
+
+export interface IDateValueObjectProps extends IValueObjectProps<Date> {
+  min: Date;
+  max: Date;
+}
 
 export class DateValueObject extends ValueObject<Date> {
-  static create(value: Date, name: string): DateValueObject {
-    return new DateValueObject({ value, name });
+  private min: Date;
+  private max: Date;
+  private constructor(props: IDateValueObjectProps) {
+    super(props);
+    this.min = props.min;
+    this.max = props.max;
   }
 
-  protected validate(value: Date, min: Date, max: Date): boolean {
-    return value >= min && value <= max;
+  static create(props: IDateValueObjectProps): DateValueObject {
+    return new DateValueObject(props);
+  }
+
+  protected validate(): boolean {
+    return this.value >= this.min && this.value <= this.max;
   }
 
   public isEqual(vo: ValueObject<unknown>): boolean {
-    return vo instanceof DateValueObject && vo.value === this.value;
+    return (
+      vo instanceof DateValueObject &&
+      vo.value.getTime() === this.value.getTime()
+    );
   }
 
   public toString(): string {
