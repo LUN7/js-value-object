@@ -6,15 +6,10 @@ interface IValueObjectProps<T> {
 export abstract class ValueObject<T> {
   readonly value: T;
   readonly name: string;
-  readonly isValid: boolean;
 
-  protected constructor({ value, name }: IValueObjectProps<T>) {
-    this.value = value;
-    this.name = name;
-    this.isValid = this.validate(value);
+  get isValid(): boolean {
+    return this.validate();
   }
-  protected abstract validate(...validationOptions: unknown[]): boolean;
-  abstract isEqual(vo: ValueObject<unknown>): boolean;
 
   /**
    * @description Throw exception if the value objects are invalid
