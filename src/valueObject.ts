@@ -1,4 +1,4 @@
-interface IValueObjectProps<T> {
+import { ValueObjectCreationError } from "./valueObjectCreationError";
   value: T;
   name: string;
 }
@@ -16,7 +16,9 @@ export abstract class ValueObject<T> {
    */
   public orFail(): never | void {
     if (!this.isValid) {
-      throw new Error(`${this.name} is invalid, value: ${this.value}`);
+      throw new ValueObjectCreationError(
+        `${this.name} is invalid, value: ${this.value}`
+      );
     }
   }
 }
