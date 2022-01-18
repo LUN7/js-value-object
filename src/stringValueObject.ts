@@ -1,12 +1,25 @@
-import { ValueObject } from "./valueObject";
+import { IValueObjectProps, ValueObject } from "./valueObject";
+
+export interface IStringValueObjectProps extends IValueObjectProps<string> {
+  min: number;
+  max: number;
+}
 
 export class StringValueObject extends ValueObject<string> {
-  static create(value: string, name: string): StringValueObject {
-    return new StringValueObject({ value, name });
+  private min: number;
+  private max: number;
+  private constructor(props: IStringValueObjectProps) {
+    super(props);
+    this.min = props.min;
+    this.max = props.max;
   }
 
-  protected validate(min: number, max: number): boolean {
-    return this.value.length >= min && this.value.length <= max;
+  static create(props: IStringValueObjectProps): StringValueObject {
+    return new StringValueObject(props);
+  }
+
+  protected validate(): boolean {
+    return this.value.length >= this.min && this.value.length <= this.max;
   }
 
   public isEqual(vo: ValueObject<unknown>): boolean {
