@@ -2,7 +2,7 @@ import { ValueObject } from ".";
 import { UniqueEntityIdValueObject } from "./uniqueEntityIdValueObject";
 
 export abstract class Entity<
-  PropsType extends { [key: string]: ValueObject<unknown> },
+  PropsType extends { [key in keyof PropsType]: ValueObject<unknown> },
   DTOType,
   DBType
 > {
