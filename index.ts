@@ -6,3 +6,10 @@ export {
   StringValueObject,
   UniqueEntityIdValueObject,
 } from "./src";
+
+export type {
+  IValueObjectProps,
+  IDateValueObjectProps,
+  INumberValueObjectProps,
+  IStringValueObjectProps,
+} from "./src";
