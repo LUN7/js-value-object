@@ -27,7 +27,7 @@ export abstract class Entity<
   public orFail(): void | never {
     try {
       for (const propKey in Object.keys(this.props)) {
-        this.props[propKey].orFail();
+        this.props[propKey as keyof PropsType].orFail();
       }
     } catch (err) {
       throw new Error(`Entity ${this.name} is invalid. Value ${err.message}`);
