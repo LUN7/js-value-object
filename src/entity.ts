@@ -18,8 +18,6 @@ export abstract class Entity<
     this.name = name;
     this.id = id || UniqueEntityIdValueObject.create(null, `${name}Id`);
   }
-  abstract toDTO(): DTOType;
-  abstract toDB(): DBType;
 
   /**
    * @description Throw exception if any of the value objects are invalid
