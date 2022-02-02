@@ -20,13 +20,14 @@ export abstract class Entity<
   /**
    * @description Throw exception if any of the value objects are invalid
    */
-  public orFail(): void | never {
+  public orFail(): this | never {
     try {
-      for (const propKey in Object.keys(this.props)) {
+      for (const propKey of Object.keys(this.props)) {
         this.props[propKey as keyof PropsType].orFail();
       }
     } catch (err) {
       throw new Error(`Entity ${this.name} is invalid. Value ${err.message}`);
     }
+    return this;
   }
 }

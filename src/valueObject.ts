@@ -16,12 +16,13 @@ export abstract class ValueObject<T> {
   /**
    * @description Throw exception if the value objects are invalid
    */
-  public orFail(): never | void {
+  public orFail(): this | never {
     if (!this.isValid) {
       throw new ValueObjectCreationError(
         `${this.name} is invalid, value: ${this.value}`
       );
     }
+    return this;
   }
 
   protected constructor({ value, name }: IValueObjectProps<T>) {
