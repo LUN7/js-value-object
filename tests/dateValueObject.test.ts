@@ -18,7 +18,7 @@ describe("test dateValueObject", () => {
       min: new Date(0),
       max: new Date(Date.now() + 1000000),
     });
-    expect(mockDateValueObject.orFail()).toBeUndefined();
+    expect(mockDateValueObject.orFail()).toBeInstanceOf(DateValueObject);
   });
 
   it("should throw error if it is not valid", () => {

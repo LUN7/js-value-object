@@ -1,5 +1,4 @@
 import { ValueObject } from "../src";
-import { ValueObjectCreationError } from "../src/valueObjectCreationError";
 
 describe("test value object", () => {
   class MockValidValueObject extends ValueObject<null> {
@@ -31,9 +30,9 @@ describe("test value object", () => {
     expect(mockValueObject).toBeInstanceOf(MockValidValueObject);
   });
 
-  it("should not throw error if it is valid", () => {
+  it("should return this if it is valid", () => {
     const mockValueObject = MockValidValueObject.create(null);
-    expect(mockValueObject.orFail()).toBeUndefined();
+    expect(mockValueObject.orFail()).toBeInstanceOf(MockValidValueObject);
   });
 
   it("should throw error if it is not valid", () => {
