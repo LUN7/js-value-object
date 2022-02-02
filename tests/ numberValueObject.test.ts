@@ -18,7 +18,7 @@ describe("test numberValueObject", () => {
       min: 0,
       max: 64,
     });
-    expect(mockNumberValueObject.orFail()).toBeUndefined();
+    expect(mockNumberValueObject.orFail()).toBeInstanceOf(NumberValueObject);
   });
 
   it("should throw error if it is not valid", () => {

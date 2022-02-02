@@ -18,7 +18,7 @@ describe("test stringValueObject", () => {
       min: 0,
       max: 64,
     });
-    expect(mockStringValueObject.orFail()).toBeUndefined();
+    expect(mockStringValueObject.orFail()).toBeInstanceOf(StringValueObject);
   });
 
   it("should throw error if it is not valid", () => {
