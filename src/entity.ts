@@ -14,7 +14,7 @@ export abstract class Entity<
   ) {
     this.props = props;
     this.name = name;
-    this.id = id || UniqueEntityIdValueObject.create(null, `${name}Id`);
+    this.id = id ?? UniqueEntityIdValueObject.create(null, `${name}Id`);
   }
 
   /**
