@@ -3,7 +3,7 @@ import { ValueObject } from "./valueObject";
 
 export class UniqueEntityIdValueObject extends ValueObject<string> {
   static create(value: string | null, name: string): UniqueEntityIdValueObject {
-    return new UniqueEntityIdValueObject({ value: value || uuid(), name });
+    return new UniqueEntityIdValueObject({ value: value ?? uuid(), name });
   }
 
   protected validate(): boolean {
