@@ -98,7 +98,7 @@ export class AccountTypeValueObject extends ValueObject<AccountType> {
   }
 
   protected validate(): boolean {
-    return this.value in AccountType;
+    return Object.values(AccountType).includes(this.value);
   }
 }
 ```
