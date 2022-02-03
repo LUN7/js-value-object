@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A value object library for nodejs",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "homepage": "https://lun7.github.io/js-value-object/",
   "repository": "git@github.com:LUN7/js-value-object.git",
   "author": "LUN7 <kwl188836@gmail.com>",
   "license": "MIT",
@@ -24,12 +26,14 @@
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.4.0",
+    "typedoc": "^0.22.11",
     "typescript": "^4.5.4"
   },
   "scripts": {
-    "build": "tsc --outDir dist",
+    "build": "tsc -p tsconfig.production.json",
     "lint": "eslint --ext .ts,.js src",
-    "test": "jest"
+    "test": "jest",
+    "doc-gen": "typedoc ./src/index.ts"
   },
   "dependencies": {
     "uuid": "^8.3.2"
